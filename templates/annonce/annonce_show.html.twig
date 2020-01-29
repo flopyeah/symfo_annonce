@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}page{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper row mt-4">
+        <div class="card col-8">
+                <img class="card-img-top" src="{{ annonce.image }}" alt="">
+            <div class="card-body">
+                <i>{{ annonce.categorie.libelle }} </i>
+                <h5 class="card-title">{{ annonce.titre }}</h5>
+                <p class="card-text">
+                    {{ annonce.description }}
+                </p>
+                <p><b>{{ annonce.prix|number_format(2, '.', ',') }} €</b></p>
+                
+                <small>Créé le : {{ annonce.createdAt|date('d-m-Y') }}</small>
+                
+                <div class="row">
+                    {% for image in annonce.images %}
+                        <div class="col-3"><img class="card-img-top" src="{{ image.url }}" alt=""></div>
+                    {% endfor %}
+                </div>
+            </div>            
+        </div>
+    </div>
+{% endblock %}
